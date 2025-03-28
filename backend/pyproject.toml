@@ -1,0 +1,22 @@
+[project]
+name = "app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ariadne>=0.26.1",
+    "cryptography>=44.0.2",
+    "dotenv>=0.9.9",
+    "fastapi>=0.115.12",
+    "pymysql>=1.1.1",
+    "pytest>=8.3.5",
+    "pyyaml>=6.0.2",
+    "sqlalchemy>=2.0.39",
+    "uvicorn>=0.34.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.2",
+]

@@ -1,0 +1,14 @@
+{
+    "dockerComposeFile": [
+        "../../compose.yml"
+    ],
+    "service": "frontend.next.sample",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dsznajder.es7-react-js-snippets"
+            ]
+        }
+    }
+}

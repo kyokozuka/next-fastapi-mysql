@@ -1,0 +1,27 @@
+type Sample {
+    id: ID!
+    name: String!
+    message: String!
+}
+input SampleInput {
+    id: ID!
+    name: String!
+    message: String!
+}
+
+input NewSampleInput {
+    name: String!
+    message: String!
+}
+
+
+type Query {
+    getSample(id: ID!): Sample!
+    listSample: [Sample!]!
+}
+
+type Mutation {
+    newSample(input: NewSampleInput!): Sample!
+    updateSample(input: SampleInput!): Sample!
+    deleteSample(id: ID!): [Sample!]!
+}

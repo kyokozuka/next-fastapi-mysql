@@ -1,0 +1,51 @@
+services:
+  frontend.next.sample:
+    container_name: frontend.next.sample
+    platform: linux/amd64
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3041:3000"
+    volumes:
+      - ./frontend:/app
+    tty: true
+    # environment:
+      # - CHOKIDAR_USEPOLLING=true
+    networks:
+      - sample.ntw
+
+  backend.fastapi.sample:
+    container_name: backend.fastapi.sample
+    platform: linux/amd64
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8040:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./backend:/usr/app
+    tty: true
+    networks:
+      - sample.ntw
+
+  db.mysql.sample:
+    container_name: db.mysql.sample
+    platform: linux/amd64
+    image: mysql:9.2
+    restart: always
+    ports:
+      - "3311:3306"
+    env_file:
+      - mysql.env
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql
+      - ./mysql/initdb:/docker-entrypoint-initdb.d
+    networks:
+      - sample.ntw
+
+networks:
+  sample.ntw:
+    driver: bridge

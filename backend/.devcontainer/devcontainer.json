@@ -1,0 +1,28 @@
+{
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "donjayamanne.githistory",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.black-formatter",
+                "ms-python.autopep8",
+                "njpwerner.autodocstring",
+                "mhutchie.git-graph",
+                "donjayamanne.githistory",
+                "eamodio.gitlens",
+                "ibm.output-colorizer",
+                "ryu1kn.partial-diff",
+                "alefragnani.bookmarks",
+                "jebbs.markdown-extended",
+                "bierner.markdown-preview-github-styles",
+                "ms-python.isort"
+            ]
+        }
+    },
+    "dockerComposeFile": [
+        "../../compose.yml"
+    ],
+    "service": "backend.fastapi.sample",
+    "workspaceFolder": "/usr/app"
+}

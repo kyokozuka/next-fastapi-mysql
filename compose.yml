@@ -10,8 +10,6 @@ services:
     volumes:
       - ./frontend:/app
     tty: true
-    # environment:
-      # - CHOKIDAR_USEPOLLING=true
     networks:
       - sample.ntw
 
@@ -42,7 +40,8 @@ services:
       - mysql.env
     volumes:
       - ./mysql/mysql_data:/var/lib/mysql
-      - ./mysql/initdb:/docker-entrypoint-initdb.d
+      - ./mysql/init.db:/docker-entrypoint-initdb.d
+    tty: true
     networks:
       - sample.ntw
 

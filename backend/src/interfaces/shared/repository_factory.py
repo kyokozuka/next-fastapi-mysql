@@ -1,8 +1,8 @@
-from src.application.shared.repository_facroty_interface import (
+from src.applications.shared.repository_facroty_interface import (
     RepositoryFactoryInterface,
 )
-from src.infrastructure.repository.sample_repository import SampleRepositpry
-from src.domain.sample.interface.sample_repository_interface import (
+from src.infrastructures.repository.sample_repository import SampleRepositpry
+from src.domains.sample.interface.sample_repository_interface import (
     SampleRepositpryInterface,
 )
 from sqlalchemy.orm import Session
@@ -16,5 +16,5 @@ class RepositoryFactory(RepositoryFactoryInterface):
     def __init__(self, session: Session):
         self._session = session
 
-    def create_sample_repository(self) -> SampleRepositpryInterface:
+    def sample_repository(self) -> SampleRepositpryInterface:
         return SampleRepositpry(session=self._session)

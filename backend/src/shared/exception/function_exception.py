@@ -8,7 +8,7 @@ F = TypeVar("F", bound=Callable[..., Any])
 logger = custom_logging()
 
 
-def function_exeption(func: F) -> F:
+def function_exception(func: F) -> F:
     @function_logging
     @functools.wraps(func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:

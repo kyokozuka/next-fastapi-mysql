@@ -1,18 +1,14 @@
 from typing import Any, Dict
-from src.shared.exception.function_exeption import function_exeption
+from src.shared.exception.function_exception import function_exception
 from src.shared.logging.function_logging import function_logging
-from src.domain.sample.model.sample_name import SampleName
-from src.domain.sample.model.sample_id import SampleID
-from src.domain.sample.model.sample_message import SampleMessage
-from src.application.sample.update_sample_service import UpdateSampleService
-from src.application.sample.sample_dto import UpdateSampleInputDto
-from src.infrastructure.db.base import SessionLocal
-from src.interfaces.shared.repository_factory import RepositoryFactory
-from src.interfaces.shared.transaction import Transaction
+from src.applications.sample.update_sample_service import UpdateSampleService
+from src.applications.sample.sample_dto import UpdateSampleInputDto
+from src.interfaces.shared.context import AppContext
 from src.interfaces.graphql.sample.graphql_interface import UpdateSampleInput
+from src.applications.sample.sample_service import SampleService
 
 
-@function_exeption
+@function_exception
 @function_logging
 def resolve_update_sample(
     _,
@@ -24,16 +20,15 @@ def resolve_update_sample(
     except Exception as e:
         raise Exception(f"Error: {e}")
 
-    session = SessionLocal()
-    factory = RepositoryFactory(session)
-    transaction = Transaction(session=session, repository_factory=factory)
+    context: AppContext = info.context
+    mapper = SampleService()
 
-    service = UpdateSampleService(transaction)
+    service = UpdateSampleService(context=context, mapper=mapper)
 
     sample_input = UpdateSampleInputDto(
-        sample_id=SampleID(value=sample_input.id),
-        name=SampleName(value=sample_input.name),
-        message=SampleMessage(value=sample_input.message),
+        sample_id=sample_input.id,
+        name=sample_input.name,
+        message=sample_input.message,
     )
 
     result = service.execute(sample_input)

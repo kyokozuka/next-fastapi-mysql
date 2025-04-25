@@ -1,13 +1,13 @@
 import pytest
 from unittest.mock import MagicMock
-from src.domain.sample.model.new_sample_model import NewSampleModel
+from src.domains.sample.model.new_sample_model import NewSampleModel
 
-from src.domain.sample.model.sample_model import SampleModel
-from src.domain.sample.model.sample_id import SampleID
-from src.infrastructure.db.model.sample import SampleDBModel
-from src.domain.sample.model.sample_message import SampleMessage
-from src.domain.sample.model.sample_name import SampleName
-from src.infrastructure.repository.sample_repository import SampleRepositpry
+from src.domains.sample.model.sample_model import SampleModel
+from src.domains.sample.model.sample_id import SampleID
+from src.infrastructures.db.model.sample import SampleDBModel
+from src.domains.sample.model.sample_message import SampleMessage
+from src.domains.sample.model.sample_name import SampleName
+from src.infrastructures.repository.sample_repository import SampleRepositpry
 from fastapi import HTTPException
 
 

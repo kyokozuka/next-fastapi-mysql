@@ -23,6 +23,7 @@ services:
       - "8040:8000"
     environment:
       - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
     volumes:
       - ./backend:/usr/app
     tty: true
